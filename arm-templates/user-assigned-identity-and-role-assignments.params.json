@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "managedIdentityName": {
-            "value": "id-p-uks-ghrdoa"
+            "value": "id-p-gwc-ghrdoa"
         },
         "containerRegistryName":{
             "value": ""

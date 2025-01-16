@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.1",
     "parameters": {
         "acrName": {
-            "value": "crpuksghrdoa"
+            "value": "crpgwcghrdoa"
         },
         "privateEndpointName":{
-            "value": "pe-p-uks-ghrdoa-01"
+            "value": "pe-p-gwc-ghrdoa-01"
         },
         "customNetworkInterfaceName":{
-            "value": "nic-p-uks-ghrdoa-01"
+            "value": "nic-p-gwc-ghrdoa-01"
         },
         "virtualNetworkId":{
             "value":""

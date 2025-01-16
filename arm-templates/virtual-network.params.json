@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.1",
     "parameters": {
         "virtualNetworkName": {
-            "value": "vnet-p-uks-ghrdoa"
+            "value": "vnet-p-gwc-ghrdoa"
         },
         "virtualNetworkAddressPrefix": {
             "value": "10.1.0.0/21"
         },
         "subnetName": {
-            "value": "snet-p-uks-ghrdoa"
+            "value": "snet-p-gwc-ghrdoa"
         },
         "subnetAddressPrefix": {
             "value": "10.1.0.0/21"
