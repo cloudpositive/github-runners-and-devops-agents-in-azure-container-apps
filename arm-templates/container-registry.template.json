@@ -74,6 +74,9 @@
             "dependsOn": [
                 "[resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))]"
             ],
+            "identity":{
+                "type":"SystemAssigned"
+            },
             "properties": {
                 "authCredentials": [
                     {
@@ -82,10 +85,7 @@
                         "passwordSecretIdentifier": "[parameters('passwordSecretIdentifier')]"
                     }
                 ],
-                "loginServer": "docker.io",
-                "identity":{
-                    "type":"SystemAssigned"
-                }
+                "loginServer": "docker.io"
             }
         },
         {
