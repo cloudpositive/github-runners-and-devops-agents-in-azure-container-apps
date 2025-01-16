@@ -69,8 +69,8 @@
         },
         {
             "type": "Microsoft.ContainerRegistry/registries/credentialSets",
-            "apiVersion": "2023-11-01-preview",
-            "name": "[concat(parameters('acrName'), '/dockerhubcredentialset')]",
+            "apiVersion": "2024-11-01-preview",
+            "name": "[concat(parameters('acrName'), '/', parameters('credentialSetName'))]",
             "dependsOn": [
                 "[resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))]"
             ],
@@ -80,7 +80,7 @@
             "properties": {
                 "authCredentials": [
                     {
-                        "name": "[parameters('credentialSetName')]",
+                        "name": "Credential1",
                         "usernameSecretIdentifier": "[parameters('usernameSecretIdentifier')]",
                         "passwordSecretIdentifier": "[parameters('passwordSecretIdentifier')]"
                     }
