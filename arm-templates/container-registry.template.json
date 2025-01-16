@@ -81,7 +81,11 @@
                         "usernameSecretIdentifier": "[parameters('usernameSecretIdentifier')]",
                         "passwordSecretIdentifier": "[parameters('passwordSecretIdentifier')]"
                     }
-                ]
+                ],
+                "loginServer": "docker.io",
+                "identity":{
+                    "type":"SystemAssigned"
+                }
             }
         },
         {
