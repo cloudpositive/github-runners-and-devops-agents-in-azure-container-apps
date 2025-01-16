@@ -31,6 +31,24 @@
             "metadata": {
                 "description": "ID of the subnet"
             }
+        },
+        "credentialSetName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the credential set"
+            }
+        },
+        "usernameSecretIdentifier": {
+            "type": "string",
+            "metadata": {
+                "description": "Secret identifier for the username"
+            }
+        },
+        "passwordSecretIdentifier": {
+            "type": "string",
+            "metadata": {
+                "description": "Secret identifier for the password"
+            }
         }
     },
     "functions": [],
@@ -38,7 +56,7 @@
     "resources": [
         {
             "type": "Microsoft.ContainerRegistry/registries",
-            "apiVersion": "2022-02-01-preview",
+            "apiVersion": "2023-11-01-preview",
             "name": "[parameters('acrName')]",
             "location": "[resourceGroup().location]",
             "sku": {
@@ -50,15 +68,34 @@
             }
         },
         {
-            "type": "Microsoft.ContainerRegistry/registries/cacheRules",
-            "apiVersion": "2023-01-01-preview",
-            "name": "[concat(parameters('acrName'), '/Ubuntu-Cache')]",
+            "type": "Microsoft.ContainerRegistry/registries/credentialSets",
+            "apiVersion": "2023-11-01-preview",
+            "name": "[concat(parameters('acrName'), '/dockerhubcredentialset')]",
             "dependsOn": [
                 "[resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))]"
             ],
             "properties": {
+                "authCredentials": [
+                    {
+                        "name": "[parameters('credentialSetName')]",
+                        "usernameSecretIdentifier": "[parameters('usernameSecretIdentifier')]",
+                        "passwordSecretIdentifier": "[parameters('passwordSecretIdentifier')]"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.ContainerRegistry/registries/cacheRules",
+            "apiVersion": "2023-11-01-preview",
+            "name": "[concat(parameters('acrName'), '/Ubuntu-Cache')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))]",
+                "[resourceId('Microsoft.ContainerRegistry/registries/credentialSets', parameters('acrName'), 'dockerhubcredentialset')]"
+            ],
+            "properties": {
                 "sourceRepository": "docker.io/library/ubuntu",
-                "targetRepository": "ubuntu"
+                "targetRepository": "ubuntu",
+                "credentialSetResourceId": "[resourceId('Microsoft.ContainerRegistry/registries/credentialSets', parameters('acrName'), 'dockerhubcredentialset')]"
             }
         },
         {

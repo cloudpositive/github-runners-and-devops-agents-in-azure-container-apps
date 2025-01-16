@@ -16,6 +16,15 @@
         },
         "subnetID":{
             "value":""
+        },
+        "credentialSetName":{
+            "value":"dockerhubCredentialSet"
+        },
+        "usernameSecretIdentifier":{
+            "value":"https://kv-p-gwc-r-and-a.vault.azure.net/secrets/docker-username"
+        },
+        "passwordSecretIdentifier":{
+            "value":"https://kv-p-gwc-r-and-a.vault.azure.net/secrets/docker-password"
         }
     }
 }
